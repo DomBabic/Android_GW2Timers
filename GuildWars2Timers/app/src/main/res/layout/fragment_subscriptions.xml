@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".Subs.Subscriptions">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/note"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:textSize="12sp"
+        android:textColor="@color/colorTabs"
+        android:id="@+id/idSubsNote"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/colorTabs"
+        android:layout_alignParentTop="true"
+        android:dividerHeight="2px"
+        android:id="@+id/idSubscriptions"
+        android:layout_above="@id/idSubsNote" >
+    </ListView>
+
+</RelativeLayout>

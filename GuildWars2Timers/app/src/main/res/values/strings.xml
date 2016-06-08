@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Guild Wars 2 Timers</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="unsubscribe">Remove</string>
+    <string name="hide">Hide</string>
+    <string name="to_subscribe_to_events_simply_click_on_desired_event_within_timer_list">To subscribe to events, simply click on desired event within Timer List.</string>
+    <string name="note">In order to subscribe, press and hold the desired event on the Timer List.</string>
+</resources>

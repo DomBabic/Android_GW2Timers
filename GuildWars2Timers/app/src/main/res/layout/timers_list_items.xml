@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="4dp"
+        android:scaleType="centerInside"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorTabs"
+        android:id="@+id/idTimerImage" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:padding="6dp"
+        android:textSize="18sp"
+        android:layout_toEndOf="@+id/idTimerImage"
+        android:textColor="@color/colorTabs"
+        android:id="@+id/idTimerTitle"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:padding="4dp"
+        android:textSize="20sp"
+        android:layout_toEndOf="@+id/idTimerImage"
+        android:textColor="@color/colorTabs"
+        android:layout_below="@+id/idTimerTitle"
+        android:id="@+id/idTimerCounter"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorTabs"
+        android:layout_below="@id/idTimerImage"
+        android:visibility="gone"
+        android:id="@+id/idTimerLocation" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textSize="16sp"
+        android:textColor="@color/colorTabs"
+        android:layout_below="@id/idTimerLocation"
+        android:visibility="gone"
+        android:id="@+id/idTimerDescription" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="4dp"
+        android:layout_below="@id/idTimerDescription"
+        android:textAllCaps="false"
+        android:text="@string/hide"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorTabs"
+        android:background="@drawable/buttonshape"
+        android:visibility="gone"
+        android:id="@+id/idTimerHide"/>
+
+</RelativeLayout>

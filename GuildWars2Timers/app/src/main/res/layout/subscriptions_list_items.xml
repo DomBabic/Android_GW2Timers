@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="4dp"
+        android:scaleType="centerInside"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/idSubsIcon" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorTabs"
+        android:id="@+id/idSubsTitle"
+        android:layout_toEndOf="@id/idSubsIcon" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="4dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:textAllCaps="false"
+        android:text="@string/unsubscribe"
+        android:textColor="@color/colorTabs"
+        android:background="@drawable/buttonshape"
+        android:id="@+id/idItemUnsubscribeButton" />
+
+</RelativeLayout>
