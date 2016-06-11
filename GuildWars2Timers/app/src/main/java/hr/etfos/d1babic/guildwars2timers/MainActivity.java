@@ -1,7 +1,11 @@
 package hr.etfos.d1babic.guildwars2timers;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import hr.etfos.d1babic.guildwars2timers.BackgroundService.BackgroundTask;
 import hr.etfos.d1babic.guildwars2timers.Database_Handler.DBHelper;
 import hr.etfos.d1babic.guildwars2timers.Subs.Subscriptions;
 import hr.etfos.d1babic.guildwars2timers.Timers.TimerList;
@@ -28,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private DBHelper mDBHelper;
 
+    private Intent backgroundIntent;
+
+    private PowerManager powerManager;
+    PowerManager.WakeLock wakeLock;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +47,17 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager();
         initAdapter();
         initDatabase();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(wakeLock != null){
+            stopService(backgroundIntent);
+            wakeLock.release();
+        }
+
     }
 
     private void initDatabase() {
@@ -88,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -118,5 +138,16 @@ public class MainActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
         
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        powerManager = (PowerManager)getSystemService(Context.POWER_SERVICE);
+        wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "WakeLock");
+        wakeLock.acquire();
+        backgroundIntent = new Intent(this, BackgroundTask.class);
+        backgroundIntent.setData(Uri.parse("Run in background"));
+        this.startService(backgroundIntent);
     }
 }

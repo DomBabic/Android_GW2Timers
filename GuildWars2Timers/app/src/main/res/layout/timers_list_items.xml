@@ -19,6 +19,7 @@
         android:padding="6dp"
         android:textSize="18sp"
         android:layout_toEndOf="@+id/idTimerImage"
+        android:layout_toRightOf="@+id/idTimerImage"
         android:textColor="@color/colorTabs"
         android:id="@+id/idTimerTitle"/>
 
@@ -29,6 +30,7 @@
         android:padding="4dp"
         android:textSize="20sp"
         android:layout_toEndOf="@+id/idTimerImage"
+        android:layout_toRightOf="@+id/idTimerImage"
         android:textColor="@color/colorTabs"
         android:layout_below="@+id/idTimerTitle"
         android:id="@+id/idTimerCounter"/>

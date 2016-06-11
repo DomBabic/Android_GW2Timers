@@ -25,6 +25,7 @@ public class TimerList extends Fragment implements TimerView, AdapterView.OnItem
     private TimerAdapter adapter;
     private ListView TimersListView;
     private TimerPresenter mTimerPresenter;
+
     private Handler handler;
     private Runnable runnable;
 
@@ -58,6 +59,7 @@ public class TimerList extends Fragment implements TimerView, AdapterView.OnItem
         };
 
         handler.post(runnable);
+
     }
 
     private void initPresenter() {
@@ -110,4 +112,5 @@ public class TimerList extends Fragment implements TimerView, AdapterView.OnItem
 
         return true;
     }
+
 }

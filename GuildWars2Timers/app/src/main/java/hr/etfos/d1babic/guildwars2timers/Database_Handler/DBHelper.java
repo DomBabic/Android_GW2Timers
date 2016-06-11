@@ -77,12 +77,12 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_EVENT_TITLE, event.getEventTitle());             //Displayed
         values.put(KEY_ICON, event.getIconID());                        //Displayed
-        values.put(KEY_LOCATION, event.getEventLocation());             //TODO: Display in expandable list
-        values.put(KEY_DESCRIPTION, event.getEventDescription());       //TODO: Display in expandable list
-        values.put(KEY_TIMER, event.getTimer());                        //TODO: Write a function for timer functionality
-        values.put(KEY_SHIFT, event.getTimerShift());                   //TODO: Use as a basis for timer offset
-        values.put(KEY_NO_OCCURRENCES, event.getOccurrence());          //TODO: Implement in timers with variable repetition times
-        values.put(KEY_SUBSCRIBED, event.getSubscribed());              //Finished functionality
+        values.put(KEY_LOCATION, event.getEventLocation());             //Displays in expandable list
+        values.put(KEY_DESCRIPTION, event.getEventDescription());       //Displays in expandable list
+        values.put(KEY_TIMER, event.getTimer());                        //Completed a function for timer functionality
+        values.put(KEY_SHIFT, event.getTimerShift());                   //Used as a basis for timer offset
+        values.put(KEY_NO_OCCURRENCES, event.getOccurrence());          //TODO: Unnecessary, remove key
+        values.put(KEY_SUBSCRIBED, event.getSubscribed());              //Completed functionality
 
         db.insert(TABLE_EVENTS, KEY_EVENT_TITLE, values);
         db.close();
