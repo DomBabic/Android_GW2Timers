@@ -3,11 +3,12 @@
     package="hr.etfos.d1babic.guildwars2timers">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="hr.etfos.d1babic.permission.BACKGROUND_PERMISSION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -19,8 +20,13 @@
 
         <service
             android:enabled="true"
-            android:name="hr.etfos.d1babic.guildwars2timers$BackgroundService.BackgroundTask"
-            android:exported="false" />
+            android:name=".BackgroundService.BackgroundTask"
+            android:permission="hr.etfos.d1babic.permission.BACKGROUND_PERMISSION"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="hr.etfos.d1babic.guildwars2timers.BackgroundService.BackgroundTask"></action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

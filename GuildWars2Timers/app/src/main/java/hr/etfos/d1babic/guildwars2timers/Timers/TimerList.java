@@ -59,7 +59,12 @@ public class TimerList extends Fragment implements TimerView, AdapterView.OnItem
         };
 
         handler.post(runnable);
+    }
 
+    @Override
+    public void onPause() {
+        handler.removeCallbacks(runnable);
+        super.onPause();
     }
 
     private void initPresenter() {
@@ -84,9 +89,9 @@ public class TimerList extends Fragment implements TimerView, AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        TextView location = (TextView)view.findViewById(R.id.idTimerLocation);
-        TextView description = (TextView)view.findViewById(R.id.idTimerDescription);
-        Button hide = (Button)view.findViewById(R.id.idTimerHide);
+        TextView location = (TextView) view.findViewById(R.id.idTimerLocation);
+        TextView description = (TextView) view.findViewById(R.id.idTimerDescription);
+        Button hide = (Button) view.findViewById(R.id.idTimerHide);
 
         location.setVisibility(View.VISIBLE);
         description.setVisibility(View.VISIBLE);
@@ -95,14 +100,14 @@ public class TimerList extends Fragment implements TimerView, AdapterView.OnItem
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        TextView tv = (TextView)view.findViewById(R.id.idTimerTitle);
+        TextView tv = (TextView) view.findViewById(R.id.idTimerTitle);
         String title = tv.getText().toString();
 
         DBHelper setSubs = new DBHelper(parent.getContext());
         setSubs.getWritableDatabase();
         setSubs.setSubscriptions(title);
 
-        ListView lv = (ListView)getActivity().findViewById(R.id.idSubscriptions);
+        ListView lv = (ListView) getActivity().findViewById(R.id.idSubscriptions);
         SubscriptionsAdapter toUpdate = new SubscriptionsAdapter();
         lv.setAdapter(toUpdate);
         toUpdate.setAdapterItems(setSubs.getSubs());

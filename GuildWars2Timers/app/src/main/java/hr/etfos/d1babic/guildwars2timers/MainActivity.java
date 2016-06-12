@@ -3,7 +3,6 @@ package hr.etfos.d1babic.guildwars2timers;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
@@ -25,17 +24,15 @@ import hr.etfos.d1babic.guildwars2timers.Timers.TimerList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActionBar mActionBar;
+    ActionBar mActionBar;
 
     private ViewPager viewPager;
-    private ViewPagerAdapter adapter;
+    ViewPagerAdapter adapter;
 
     private TabLayout tabLayout;
-    private DBHelper mDBHelper;
+    DBHelper mDBHelper;
 
-    private Intent backgroundIntent;
-
-    private PowerManager powerManager;
+    PowerManager powerManager;
     PowerManager.WakeLock wakeLock;
 
     @Override
@@ -47,17 +44,6 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager();
         initAdapter();
         initDatabase();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if(wakeLock != null){
-            stopService(backgroundIntent);
-            wakeLock.release();
-        }
-
     }
 
     private void initDatabase() {
@@ -137,17 +123,24 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-        
+
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        powerManager = (PowerManager)getSystemService(Context.POWER_SERVICE);
+    protected void onStop() {
+        super.onStop();
+        powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "WakeLock");
         wakeLock.acquire();
-        backgroundIntent = new Intent(this, BackgroundTask.class);
-        backgroundIntent.setData(Uri.parse("Run in background"));
-        this.startService(backgroundIntent);
+
+       startService(new Intent(this, BackgroundTask.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(this, BackgroundTask.class));
+        if (wakeLock != null)
+            wakeLock.release();
     }
 }

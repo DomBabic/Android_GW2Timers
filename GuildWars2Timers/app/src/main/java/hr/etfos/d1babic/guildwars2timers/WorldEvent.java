@@ -12,12 +12,11 @@ public class WorldEvent {
     private String EventDescription;
     private String Timer;
     private String TimerShift;
-    private int Occurrence;
     private int Subscribed;
     private long milliseconds;
 
 
-    public WorldEvent(int id, String eventTitle, int iconID, String eventLocation, String eventDescription, String timer, String timerShift, int occurrence, int subscribed) {
+    public WorldEvent(int id, String eventTitle, int iconID, String eventLocation, String eventDescription, String timer, String timerShift, int subscribed) {
         this.id = id;
         this.EventTitle = eventTitle;
         this.IconID = iconID;
@@ -25,18 +24,16 @@ public class WorldEvent {
         this.EventDescription = eventDescription;
         this.Timer = timer;
         this.TimerShift = timerShift;
-        this.Occurrence = occurrence;
         this.Subscribed = subscribed;
     }
 
-    public WorldEvent(String eventTitle, int iconID, String eventLocation, String eventDescription, String timer, String timerShift, int occurrence, int subscribed) {
+    public WorldEvent(String eventTitle, int iconID, String eventLocation, String eventDescription, String timer, String timerShift, int subscribed) {
         this.EventTitle = eventTitle;
         this.IconID = iconID;
         this.EventLocation = eventLocation;
         this.EventDescription = eventDescription;
         this.Timer = timer;
         this.TimerShift = timerShift;
-        this.Occurrence = occurrence;
         this.Subscribed = subscribed;
     }
 
@@ -91,14 +88,6 @@ public class WorldEvent {
 
     public void setTimerShift(String timerShift) {
         TimerShift = timerShift;
-    }
-
-    public int getOccurrence() {
-        return Occurrence;
-    }
-
-    public void setOccurrence(int occurrence) {
-        Occurrence = occurrence;
     }
 
     public int getSubscribed() {

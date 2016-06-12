@@ -80,4 +80,5 @@ public class SubscriptionsAdapter extends BaseAdapter {
 
         return convertView;
     }
+
 }

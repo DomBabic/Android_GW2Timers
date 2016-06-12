@@ -64,7 +64,7 @@ public class BackgroundPresenter implements BackgroundCheck {
             current.setMilliseconds(timerQueen(calendar));
         }
 
-        setNotification(current.getMilliseconds(), current);
+        setNotification(current);
     }
 
     @Override
@@ -98,15 +98,15 @@ public class BackgroundPresenter implements BackgroundCheck {
             current.setMilliseconds(timerQueen(calendar));
         }
 
-        setNotification(current.getMilliseconds(), current);
+        setNotification(current);
 
 
         return setTimer(current.getMilliseconds());
     }
 
-    private void setNotification(long milliseconds, WorldEvent current) {
+    private void setNotification(WorldEvent current) {
 
-        if((current.getMilliseconds() - (milliseconds%1000)) <= 1000 && current.getSubscribed() == 1) {
+        if(current.getMilliseconds() / 1000 == 1 && current.getSubscribed() == 1) {
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext)
                     .setContentTitle("Event starting!")
